@@ -1,51 +1,41 @@
-## Code Style
-
-Code Style을 정의함으로써 프로젝트 전반적으로 Code Style을 통일시키고, 코드 작성에서의 실수를 방지합니다.
-
-전체적으로 안드로이드 공식 문서의 [Kotlin Style Guide](https://developer.android.com/kotlin/style-guide#whitespace)를 적용하고, google의 [java style guide](https://google.github.io/styleguide/javaguide.html#s4.3-one-statement-per-line)를 참조했습니다.
+## Architecture
 
 
 
-파일 인코딩 (File Encoding)
-
-모든 소스 파일은 UTF-8로 인코딩됩니다.
+<img src="arts/clean_uncle_bob.png" width="400px"/>
 
 
 
-들여쓰기 (Indent)
+이 앱은 클린 아키텍처를 기반으로 설계됐습니다. 클린 아키텍처는 추후 소프트웨어가 변경하기 유리하도록 설계한 구조입니다. 소프트웨어를 계층으로 나눔으로써 관심사의 분리라는 목표를 달성하고, 특히, 비즈니스 로직과 그외 로직 간의 결합도를 낮추는데 중심을 뒀습니다. 각 계층의 의존성은 단방향으로 흐르는데, 바깥쪽 계층인 저수준 정책부터 안쪽 계층인 고수준 정책으로 의존성이 형성됩니다.
 
-들여쓰기는 4칸으로 설정합니다.
+클린 아키텍처를 구현하기 위해 Presentation 레이어, Domain 레이어, Data 레이어로 소프트웨어를 계층화했습니다.
 
+<img src="arts/mvvm.png" width="600px"/>
 
-
-구조 (Structure)
-
-import에서 모든 유형의 와일드 카드 형태는 허용하지 않습니다.
-
-import는 줄바꿈이 없습니다.
-
-Kotlin 파일 내에 Companion object가 있다면 Companion Object를 최상단에 위치시킵니다.
-
-파일의 네임은 최상위 클래스가 하나인 경우 클래스 네임.kt로 하고, 최상위 수준이 여러개인 경우는 해당 파일을 잘 설명할 수 있는 이름을 선택합니다.
+이 중 Presentation 레이어는 다시 MVVM 패턴으로 설계했습니다. MVVM은 뷰와 모델 사이에 뷰모델을 둠으로써 관심사를 분리하고, UI와 모델이 구분되는 패턴인데, 특히 AAC 라이브러리를 통해 더욱 효율적으로 구현할 수 있다는 장점이 있습니다. 뷰가 뷰모델을 observe함으로써 UI에 변경사항이 생기면 자동으로 UI를 갱신하도록 구현했습니다.
 
 
 
-줄바꿈 (Line Wrapping)
+## Credit
 
-줄바꿈의 목표는 코드를 가장 명확히 보여주는 것입니다.
+- Android Jetpack
 
-Column limit은 100으로 합니다. 100자를 넘어가는 라인의 경우 줄바꿈 합니다.
+  - UI
+    - Fragment
+    - ConstraintLayout
+    - ...
 
-If, for문 앞에서 줄바꿈을 합니다.
+  - Architecture
+    - Data Binding
+    - Lifecycles
+    - LiveData
+    - Navigation
+    - Hilt
 
-람다 화살표는 인수 목록과 연결된 상태로 유지합니다.
+- Kotlin
 
+  - Coroutines
+  - Coroutines Flow
 
+- Retrofit2
 
-함수 (Function)
-
-함수는 매개 변수 목록이 한줄에 들어가지 않는 경우,
-
-매개 변수 목록을 한 줄에 하나씩 표현합니다.
-
-하나의 expression만 가지는 함수의 경우 (값을 하나만 리턴하는) expression 형식으로 함수를 작성합니다.
