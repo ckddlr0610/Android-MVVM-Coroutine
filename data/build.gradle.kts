@@ -1,3 +1,5 @@
+import com.example.buildsrc.Versions
+
 plugins {
     id("com.android.library")
     id("kotlin-android")
@@ -6,12 +8,12 @@ plugins {
 }
 
 android {
-    compileSdk = 30
+    compileSdk = Versions.androidCompileSdkVersion
     buildToolsVersion = "30.0.3"
 
     defaultConfig {
-        minSdk = 21
-        targetSdk = 30
+        minSdk = Versions.androidMinSdkVersion
+        targetSdk = Versions.androidTargetSdkVersion
         var versionCode = 1
         var versionName = "1.0"
 
@@ -39,14 +41,14 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.6.0")
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("com.google.android.material:material:1.4.0")
-    testImplementation("junit:junit:4.+")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    implementation(Versions.AndroidX.coreKtx)
+    implementation(Versions.AndroidX.appCompat)
+    implementation(Versions.AndroidX.material)
+    testImplementation(Versions.Test.jUnit)
+    androidTestImplementation(Versions.Test.jUnitExt)
+    androidTestImplementation(Versions.Test.espresso)
 
     // hilt
-    implementation ("com.google.dagger:hilt-android:2.28-alpha")
-    kapt("com.google.dagger:hilt-android-compiler:2.28-alpha")
+    implementation (Versions.Hilt.hiltAndroid)
+    kapt(Versions.Hilt.hiltCompiler)
 }
