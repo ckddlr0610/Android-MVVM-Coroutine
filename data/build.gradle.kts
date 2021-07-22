@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
+    id("dagger.hilt.android.plugin")
+    kotlin("kapt")
 }
 
 android {
@@ -43,4 +45,8 @@ dependencies {
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+
+    // hilt
+    implementation ("com.google.dagger:hilt-android:2.28-alpha")
+    kapt("com.google.dagger:hilt-android-compiler:2.28-alpha")
 }
