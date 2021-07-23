@@ -25,14 +25,19 @@ object Versions {
         object Navigation {
             val fragmentKtx = "androidx.navigation:navigation-fragment-ktx:2.3.5"
             val uiKtx = "androidx.navigation:navigation-ui-ktx:2.3.5"
-
         }
+    }
+
+    object Network {
+        val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+        val okHttpLoggingIntercepter = "com.squareup.okhttp3:logging-interceptor:4.9.1"
     }
 
     object Hilt {
         val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:2.28-alpha"
         val hiltAndroid = "com.google.dagger:hilt-android:2.28-alpha"
         val hiltCompiler = "com.google.dagger:hilt-android-compiler:2.28-alpha"
+        val hiltAndroidCompiler = "com.google.dagger:hilt-android:2.28-alpha"
     }
 
     object Library {
