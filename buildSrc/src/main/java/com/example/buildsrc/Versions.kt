@@ -33,6 +33,12 @@ object Versions {
         val okHttpLoggingIntercepter = "com.squareup.okhttp3:logging-interceptor:4.9.1"
     }
 
+    object Room {
+        val roomRuntime = "androidx.room:room-runtime:2.3.0"
+        val roomCompiler = "androidx.room:room-compiler:2.3.0"
+        val roomKtx= "androidx.room:room-ktx:2.3.0"
+    }
+
     object Hilt {
         val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:2.28-alpha"
         val hiltAndroid = "com.google.dagger:hilt-android:2.28-alpha"
