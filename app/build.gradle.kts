@@ -45,20 +45,28 @@ dependencies {
     implementation(Versions.AndroidX.appCompat)
     implementation(Versions.AndroidX.material)
     implementation (Versions.AndroidX.constraint)
+    implementation(Versions.AndroidX.livedata)
+    implementation(Versions.AndroidX.viewModel)
     implementation (Versions.AndroidX.Navigation.fragmentKtx)
     implementation (Versions.AndroidX.Navigation.uiKtx)
     testImplementation(Versions.Test.jUnit)
     androidTestImplementation(Versions.Test.jUnitExt)
     androidTestImplementation(Versions.Test.espresso)
 
+    //kotlin
+    implementation(Versions.Kotlin.coroutineCore)
+
     // hilt
     implementation (Versions.Hilt.hiltAndroid)
     kapt(Versions.Hilt.hiltCompiler)
     kapt(Versions.Hilt.hiltAndroidCompiler)
+    implementation(Versions.Hilt.hiltViewModel)
 
     // network
     implementation (Versions.Network.retrofit)
     implementation (Versions.Network.okHttpLoggingIntercepter)
+    implementation(Versions.Network.gson)
+    implementation (Versions.Network.gsonConverter)
 
     // room
     implementation(Versions.Room.roomRuntime)

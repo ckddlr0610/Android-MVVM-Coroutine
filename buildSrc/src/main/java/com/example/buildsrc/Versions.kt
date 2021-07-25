@@ -10,6 +10,10 @@ object Versions {
         val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
     }
 
+    object Kotlin {
+        val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8"
+    }
+
     object Test {
         val jUnit = "junit:junit:4.12"
         val jUnitExt = "androidx.test.ext:junit:1.1.3"
@@ -21,6 +25,8 @@ object Versions {
         val appCompat = "androidx.appcompat:appcompat:1.3.0"
         val material = "com.google.android.material:material:1.4.0"
         val constraint = "androidx.constraintlayout:constraintlayout:2.0.4"
+        val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+        val viewModel = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01"
 
         object Navigation {
             val fragmentKtx = "androidx.navigation:navigation-fragment-ktx:2.3.5"
@@ -31,6 +37,8 @@ object Versions {
     object Network {
         val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
         val okHttpLoggingIntercepter = "com.squareup.okhttp3:logging-interceptor:4.9.1"
+        val gson = "com.google.code.gson:gson:2.8.7"
+        val gsonConverter = "com.squareup.retrofit2:converter-gson:2.9.0"
     }
 
     object Room {
@@ -41,9 +49,10 @@ object Versions {
 
     object Hilt {
         val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:2.28-alpha"
-        val hiltAndroid = "com.google.dagger:hilt-android:2.28-alpha"
-        val hiltCompiler = "com.google.dagger:hilt-android-compiler:2.28-alpha"
-        val hiltAndroidCompiler = "com.google.dagger:hilt-android:2.28-alpha"
+        val hiltAndroid = "com.google.dagger:hilt-android:2.37"
+        val hiltCompiler = "com.google.dagger:hilt-android-compiler:2.37"
+        val hiltAndroidCompiler = "com.google.dagger:hilt-android:2.37"
+        val hiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
     }
 
     object Library {

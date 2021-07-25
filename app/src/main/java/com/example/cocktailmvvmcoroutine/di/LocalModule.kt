@@ -6,12 +6,12 @@ import com.example.cocktailmvvmcoroutine.data.local.CocktailDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 @Module
-class LocalModule {
+object LocalModule {
     @Provides
     @Singleton
     fun provideAppDatabase(
