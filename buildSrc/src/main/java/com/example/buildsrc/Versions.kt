@@ -57,5 +57,7 @@ object Versions {
 
     object Library {
         val ktlint = "org.jlleitschuh.gradle:ktlint-gradle:10.1.0"
+        val glide = "com.github.bumptech.glide:glide:4.12.0"
+        val glideCompiler = "com.github.bumptech.glide:compiler:4.12.0"
     }
 }

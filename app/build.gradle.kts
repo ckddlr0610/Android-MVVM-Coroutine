@@ -37,6 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -73,4 +76,8 @@ dependencies {
     annotationProcessor (Versions.Room.roomCompiler)
     kapt(Versions.Room.roomCompiler)
     implementation(Versions.Room.roomKtx)
+
+    // image
+    implementation (Versions.Library.glide)
+    annotationProcessor (Versions.Library.glideCompiler)
 }
