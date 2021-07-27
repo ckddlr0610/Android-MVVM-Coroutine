@@ -70,6 +70,7 @@ dependencies {
     implementation (Versions.Network.okHttpLoggingIntercepter)
     implementation(Versions.Network.gson)
     implementation (Versions.Network.gsonConverter)
+    testImplementation (Versions.Network.mockWebServer)
 
     // room
     implementation(Versions.Room.roomRuntime)

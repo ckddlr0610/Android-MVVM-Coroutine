@@ -17,6 +17,6 @@ class HomeViewModel @Inject constructor(
         .fetchCocktailList()
         .asLiveData()
 
-    val cocktail : LiveData<Result<Cocktails>>
+    val cocktails : LiveData<Result<Cocktails>>
         get() = _cocktails
 }

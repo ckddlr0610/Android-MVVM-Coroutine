@@ -19,8 +19,7 @@ class HomeAdapter : ListAdapter<Cocktails.Cocktail, RecyclerView.ViewHolder>(dif
         )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val cocktail = getItem(position)
-        (holder as CocktailViewHolder).bind(cocktail)
+        (holder as CocktailViewHolder).bind(getItem(position))
     }
 
     class CocktailViewHolder(private val binding: ItemCocktailListBinding) :
@@ -38,18 +37,16 @@ class HomeAdapter : ListAdapter<Cocktails.Cocktail, RecyclerView.ViewHolder>(dif
             override fun areItemsTheSame(
                 oldItem: Cocktails.Cocktail,
                 newItem: Cocktails.Cocktail
-            ): Boolean {
-                return oldItem.idDrink == newItem.idDrink
-            }
+            ): Boolean =
+                oldItem.idDrink == newItem.idDrink
 
             override fun areContentsTheSame(
                 oldItem: Cocktails.Cocktail,
                 newItem: Cocktails.Cocktail
-            ): Boolean {
-                return oldItem.idDrink == newItem.idDrink &&
+            ): Boolean =
+                oldItem.idDrink == newItem.idDrink &&
                     oldItem.strDrink == newItem.strDrink &&
                     oldItem.strDrinkThumb == newItem.strDrinkThumb
-            }
 
         }
     }
