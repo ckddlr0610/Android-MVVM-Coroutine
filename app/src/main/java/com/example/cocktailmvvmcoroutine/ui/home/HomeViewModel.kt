@@ -3,7 +3,7 @@ package com.example.cocktailmvvmcoroutine.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.example.cocktailmvvmcoroutine.data.model.Cocktails
+import com.example.cocktailmvvmcoroutine.data.model.Cocktail
 import com.example.cocktailmvvmcoroutine.data.model.Result
 import com.example.cocktailmvvmcoroutine.data.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,6 +17,6 @@ class HomeViewModel @Inject constructor(
         .fetchCocktailList()
         .asLiveData()
 
-    val cocktails : LiveData<Result<Cocktails>>
+    val cocktails : LiveData<Result<List<Cocktail>>>
         get() = _cocktails
 }

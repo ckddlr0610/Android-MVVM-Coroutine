@@ -1,4 +1,4 @@
-package com.example.cocktailmvvmcoroutine.data
+package com.example.cocktailmvvmcoroutine.service
 
 import com.example.cocktailmvvmcoroutine.data.network.CocktailService
 import okhttp3.mockwebserver.MockResponse

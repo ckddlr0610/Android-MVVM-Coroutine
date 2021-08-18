@@ -7,7 +7,7 @@
 
         <variable
             name="cocktail"
-            type="com.example.cocktailmvvmcoroutine.data.model.Cocktails.Cocktail" />
+            type="com.example.cocktailmvvmcoroutine.data.model.Cocktail" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

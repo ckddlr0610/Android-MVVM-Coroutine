@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cocktailmvvmcoroutine.data.model.Cocktails
+import com.example.cocktailmvvmcoroutine.data.model.Cocktail
 import com.example.cocktailmvvmcoroutine.databinding.ItemCocktailListBinding
 
-class HomeAdapter : ListAdapter<Cocktails.Cocktail, RecyclerView.ViewHolder>(diffUtil) {
+class HomeAdapter : ListAdapter<Cocktail, RecyclerView.ViewHolder>(diffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         CocktailViewHolder(
             ItemCocktailListBinding.inflate(
@@ -24,7 +24,7 @@ class HomeAdapter : ListAdapter<Cocktails.Cocktail, RecyclerView.ViewHolder>(dif
 
     class CocktailViewHolder(private val binding: ItemCocktailListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(cocktail: Cocktails.Cocktail) {
+        fun bind(cocktail: Cocktail) {
             binding.apply {
                 this.cocktail = cocktail
                 executePendingBindings()
@@ -33,16 +33,16 @@ class HomeAdapter : ListAdapter<Cocktails.Cocktail, RecyclerView.ViewHolder>(dif
     }
 
     companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<Cocktails.Cocktail>() {
+        val diffUtil = object : DiffUtil.ItemCallback<Cocktail>() {
             override fun areItemsTheSame(
-                oldItem: Cocktails.Cocktail,
-                newItem: Cocktails.Cocktail
+                oldItem: Cocktail,
+                newItem: Cocktail
             ): Boolean =
                 oldItem.idDrink == newItem.idDrink
 
             override fun areContentsTheSame(
-                oldItem: Cocktails.Cocktail,
-                newItem: Cocktails.Cocktail
+                oldItem: Cocktail,
+                newItem: Cocktail
             ): Boolean =
                 oldItem.idDrink == newItem.idDrink &&
                     oldItem.strDrink == newItem.strDrink &&

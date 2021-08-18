@@ -1,5 +1,6 @@
 package com.example.cocktailmvvmcoroutine.di
 
+import com.example.cocktailmvvmcoroutine.data.local.CocktailDao
 import com.example.cocktailmvvmcoroutine.data.network.CocktailService
 import com.example.cocktailmvvmcoroutine.data.repository.CocktailRepository
 import com.example.cocktailmvvmcoroutine.data.repository.Repository
@@ -15,7 +16,11 @@ object RepositoryModule {
     @Provides
     @ActivityRetainedScoped
     fun provideRepository(
+        cocktailDao: CocktailDao,
         cocktailService: CocktailService
     ) : Repository =
-        CocktailRepository(cocktailService)
+        CocktailRepository(
+            cocktailDao,
+            cocktailService
+        )
 }

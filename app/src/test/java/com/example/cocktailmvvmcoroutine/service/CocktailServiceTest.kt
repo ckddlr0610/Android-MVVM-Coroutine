@@ -1,19 +1,10 @@
-package com.example.cocktailmvvmcoroutine.data
+package com.example.cocktailmvvmcoroutine.service
 
 import com.example.cocktailmvvmcoroutine.data.network.CocktailService
 import kotlinx.coroutines.runBlocking
-import okhttp3.mockwebserver.MockResponse
-import okhttp3.mockwebserver.MockWebServer
-import okio.buffer
-import okio.source
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
-import org.junit.After
-import org.junit.Before
 import org.junit.Test
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.nio.charset.StandardCharsets
 
 class CocktailServiceTest : BaseNetworkServiceTest<CocktailService>() {
     @Test

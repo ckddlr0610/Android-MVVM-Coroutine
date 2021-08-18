@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.cocktailmvvmcoroutine.data.model.Cocktails
+import com.example.cocktailmvvmcoroutine.data.model.Cocktail
 import com.example.cocktailmvvmcoroutine.data.model.Result
 import com.example.cocktailmvvmcoroutine.databinding.FragmentHomeBinding
 import com.example.cocktailmvvmcoroutine.ui.adapter.HomeAdapter
@@ -37,8 +37,8 @@ class HomeFragment : Fragment() {
                 is Result.Loading -> {
                     Toast.makeText(requireActivity(), "loading", Toast.LENGTH_SHORT).show()
                 }
-                is Result.Success<Cocktails> -> {
-                    adapter.submitList(result.item.drinks)
+                is Result.Success<List<Cocktail>> -> {
+                    adapter.submitList(result.item)
                 }
                 is Result.Error -> {
                     Toast.makeText(requireActivity(), "error : ${result.throwable.toString()}", Toast.LENGTH_SHORT).show()
