@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
         val adapter = HomeAdapter()
         binding.rvCocktailList.adapter = adapter

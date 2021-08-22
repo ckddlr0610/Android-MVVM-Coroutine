@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.cocktailmvvmcoroutine.data.model.Cocktail
-import com.example.cocktailmvvmcoroutine.data.model.Cocktails
 
 @Dao
 interface CocktailDao {
@@ -13,4 +12,7 @@ interface CocktailDao {
 
     @Query("SELECT * FROM Cocktail")
     suspend fun getCocktails() : List<Cocktail>
+
+    @Query("DELETE FROM Cocktail")
+    suspend fun clearTable()
 }
