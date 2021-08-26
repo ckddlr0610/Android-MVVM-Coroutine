@@ -2,23 +2,31 @@ package com.example.cocktailmvvmcoroutine.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.cocktailmvvmcoroutine.data.local.CocktailDatabase
+import com.example.cocktailmvvmcoroutine.data.local.AppDatabase
+import com.example.cocktailmvvmcoroutine.data.local.CocktailDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 @Module
-class LocalModule {
+object LocalModule {
     @Provides
     @Singleton
     fun provideAppDatabase(
         application: Application
-    ): CocktailDatabase {
+    ): AppDatabase {
         return Room
-            .databaseBuilder(application, CocktailDatabase::class.java, "Cocktail.db")
+            .databaseBuilder(application, AppDatabase::class.java, "Cocktail.db")
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideCocktailDao(
+        appDatabase: AppDatabase
+    ): CocktailDao =
+        appDatabase.cocktailDao()
 }
