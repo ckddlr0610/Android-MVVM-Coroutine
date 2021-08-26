@@ -2,6 +2,7 @@ package com.example.cocktailmvvmcoroutine.di
 
 import com.example.cocktailmvvmcoroutine.data.network.CocktailService
 import com.example.cocktailmvvmcoroutine.data.network.HttpClient
+import com.example.cocktailmvvmcoroutine.util.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +19,7 @@ object NetworkModule {
     fun provideRetrofit(httpClient: HttpClient) =
         Retrofit.Builder()
             .client(httpClient.okHttpClient)
-            .baseUrl("https://www.thecocktaildb.com/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
