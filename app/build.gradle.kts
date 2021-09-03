@@ -57,6 +57,7 @@ dependencies {
     androidTestImplementation(Versions.Test.espresso)
     androidTestImplementation(Versions.Test.mockitoAndroid)
     testImplementation (Versions.Test.mockitoInline)
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1")
 
     //kotlin
     implementation(Versions.Kotlin.coroutineCore)
