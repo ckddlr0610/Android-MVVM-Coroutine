@@ -18,6 +18,8 @@ object Versions {
         const val jUnit = "junit:junit:4.12"
         const val jUnitExt = "androidx.test.ext:junit:1.1.3"
         const val espresso = "androidx.test.espresso:espresso-core:3.4.0"
+        const val mockitoAndroid = "org.mockito:mockito-android:2.24.5"
+        const val mockitoInline = "org.mockito:mockito-inline:3.5.13"
     }
 
     object AndroidX {

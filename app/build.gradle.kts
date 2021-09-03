@@ -55,8 +55,8 @@ dependencies {
     testImplementation(Versions.Test.jUnit)
     androidTestImplementation(Versions.Test.jUnitExt)
     androidTestImplementation(Versions.Test.espresso)
-    androidTestImplementation("org.mockito:mockito-android:2.24.5")
-    testImplementation ("org.mockito:mockito-inline:3.5.13")
+    androidTestImplementation(Versions.Test.mockitoAndroid)
+    testImplementation (Versions.Test.mockitoInline)
 
     //kotlin
     implementation(Versions.Kotlin.coroutineCore)
