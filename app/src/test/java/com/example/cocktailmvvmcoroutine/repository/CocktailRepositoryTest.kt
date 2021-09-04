@@ -23,11 +23,13 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class CocktailRepositoryTest {
     private lateinit var repository: CocktailRepository
-    private val service = mock(CocktailService::class.java)
-    private val cocktailDao = mock(CocktailDao::class.java)
+    private lateinit var service : CocktailService
+    private lateinit var cocktailDao : CocktailDao
 
     @Before
     fun setup() {
+        service = mock(CocktailService::class.java)
+        cocktailDao = mock(CocktailDao::class.java)
         repository = CocktailRepository(cocktailDao, service)
     }
 
