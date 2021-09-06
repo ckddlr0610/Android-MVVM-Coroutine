@@ -55,6 +55,9 @@ dependencies {
     testImplementation(Versions.Test.jUnit)
     androidTestImplementation(Versions.Test.jUnitExt)
     androidTestImplementation(Versions.Test.espresso)
+    androidTestImplementation(Versions.Test.mockitoAndroid)
+    testImplementation (Versions.Test.mockitoInline)
+    testImplementation (Versions.Test.coroutineTest)
 
     //kotlin
     implementation(Versions.Kotlin.coroutineCore)

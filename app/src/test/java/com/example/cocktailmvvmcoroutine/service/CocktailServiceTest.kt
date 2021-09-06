@@ -11,7 +11,7 @@ class CocktailServiceTest : BaseNetworkServiceTest<CocktailService>() {
     fun test_fetchCocktailList() = runBlocking {
         service = createService(CocktailService::class.java)
         enqueueMockResponse("cocktails.json")
-        val response = service.fetchAlcoholicCocktails()
+        val response = service.getAlcoholicCocktailList()
         server.takeRequest()
 
         assertThat(response.drinks[0].strDrink, `is`("1-900-FUK-MEUP"))

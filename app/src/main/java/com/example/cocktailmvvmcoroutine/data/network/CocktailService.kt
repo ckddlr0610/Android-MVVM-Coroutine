@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface CocktailService {
     @GET("api/json/v1/1/filter.php?a=Alcoholic")
-    suspend fun fetchAlcoholicCocktails(
+    suspend fun getAlcoholicCocktailList(
         @Query("a") alcoholic: String = "Alcoholic"
     ): CocktailResponse
 }

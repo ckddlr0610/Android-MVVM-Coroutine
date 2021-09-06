@@ -13,17 +13,16 @@ class CocktailRepository @Inject constructor(
     val cocktailDao: CocktailDao,
     val cocktailService: CocktailService
 ) : Repository {
-    override fun fetchCocktailList(): Flow<Result<List<Cocktail>>> {
-        //TODO: 가져온 데이터를 로컬에는 페이지별로 저장할 수 있을까? 다음 로드할때 페이지 별로 가져오기 take 사용해서
+    override fun getCocktailList(): Flow<Result<List<Cocktail>>> {
         return flow {
-            val cocktails = cocktailDao.getCocktails()
+            val cocktails = cocktailDao.getCocktailList()
 
             if (cocktails.isEmpty()) {
                 emit(Result.Loading)
                 try {
-                    val response = cocktailService.fetchAlcoholicCocktails()
+                    val response = cocktailService.getAlcoholicCocktailList()
                     emit(Result.Success(response.drinks))
-                    cocktailDao.insertCocktails(response.drinks)
+                    cocktailDao.insertCocktailList(response.drinks)
                 } catch (e: IOException) {
                     emit(Result.Error(e))
                 }
