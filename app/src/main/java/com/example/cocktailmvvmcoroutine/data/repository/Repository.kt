@@ -5,5 +5,5 @@ import com.example.cocktailmvvmcoroutine.data.model.Result
 import kotlinx.coroutines.flow.Flow
 
 interface Repository {
-    fun fetchCocktailList(): Flow<Result<List<Cocktail>>>
+    fun getCocktailList(): Flow<Result<List<Cocktail>>>
 }

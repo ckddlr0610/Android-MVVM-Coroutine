@@ -8,10 +8,10 @@ import com.example.cocktailmvvmcoroutine.data.model.Cocktail
 @Dao
 interface CocktailDao {
     @Insert
-    suspend fun insertCocktails(cocktails: List<Cocktail>)
+    suspend fun insertCocktailList(cocktails: List<Cocktail>)
 
     @Query("SELECT * FROM Cocktail")
-    suspend fun getCocktails() : List<Cocktail>
+    suspend fun getCocktailList() : List<Cocktail>
 
     @Query("DELETE FROM Cocktail")
     suspend fun clearTable()

@@ -35,12 +35,12 @@ class CocktailRepositoryTest {
 
     @ExperimentalCoroutinesApi
     @Test
-    fun fetchCocktailsFromRemoteTest() = runBlockingTest {
-        val mockCocktails = MockData.getMockCocktailsFromNetwork()
-        `when`(cocktailDao.getCocktails()).thenReturn(listOf())
-        `when`(service.fetchAlcoholicCocktails()).thenReturn(CocktailResponse(listOf(mockCocktails)))
+    fun getCocktailListFromRemoteTest() = runBlockingTest {
+        val mockCocktails = MockData.getMockCocktailList()
+        `when`(cocktailDao.getCocktailList()).thenReturn(listOf())
+        `when`(service.getAlcoholicCocktailList()).thenReturn(CocktailResponse(listOf(mockCocktails)))
 
-        val result = repository.fetchCocktailList().drop(1).first()
+        val result = repository.getCocktailList().drop(1).first()
 
         assertThat(result, instanceOf(Result.Success::class.java))
 
@@ -50,7 +50,7 @@ class CocktailRepositoryTest {
             assertEquals(result.item[0].strDrinkThumb, mockCocktails.strDrinkThumb)
         }
 
-        verify(cocktailDao, atLeast(1)).getCocktails()
-        verify(service, atLeast(1)).fetchAlcoholicCocktails()
+        verify(cocktailDao, atLeast(1)).getCocktailList()
+        verify(service, atLeast(1)).getAlcoholicCocktailList()
     }
 }
