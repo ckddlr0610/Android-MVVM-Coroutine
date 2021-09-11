@@ -1,7 +1,11 @@
 package com.example.cocktailmvvmcoroutine.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class CocktailDetailInfo(
-    val idDrink: Long,
+    @PrimaryKey val idDrink: Long,
     val strDrink: String,
     val strTags: String,
     val strInstructions: String,
