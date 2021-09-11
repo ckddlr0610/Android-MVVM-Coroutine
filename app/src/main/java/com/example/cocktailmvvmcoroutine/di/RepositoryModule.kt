@@ -3,7 +3,6 @@ package com.example.cocktailmvvmcoroutine.di
 import com.example.cocktailmvvmcoroutine.data.local.CocktailDao
 import com.example.cocktailmvvmcoroutine.data.network.CocktailService
 import com.example.cocktailmvvmcoroutine.data.repository.MainRepository
-import com.example.cocktailmvvmcoroutine.data.repository.Repository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +17,7 @@ object RepositoryModule {
     fun provideRepository(
         cocktailDao: CocktailDao,
         cocktailService: CocktailService
-    ) : Repository =
+    ) : MainRepository =
         MainRepository(
             cocktailDao,
             cocktailService

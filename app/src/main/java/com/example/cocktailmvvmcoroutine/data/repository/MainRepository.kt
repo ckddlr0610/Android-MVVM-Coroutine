@@ -13,7 +13,7 @@ class MainRepository @Inject constructor(
     val cocktailDao: CocktailDao,
     val cocktailService: CocktailService
 ) : Repository {
-    override fun getCocktailList(): Flow<Result<List<Cocktail>>> {
+    fun getCocktailList(): Flow<Result<List<Cocktail>>> {
         return flow {
             val cocktails = cocktailDao.getCocktailList()
 

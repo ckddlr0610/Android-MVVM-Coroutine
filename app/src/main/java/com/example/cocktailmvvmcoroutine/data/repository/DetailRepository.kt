@@ -1,4 +1,4 @@
 package com.example.cocktailmvvmcoroutine.data.repository
 
-class DetailRepository {
+class DetailRepository : Repository {
 }
