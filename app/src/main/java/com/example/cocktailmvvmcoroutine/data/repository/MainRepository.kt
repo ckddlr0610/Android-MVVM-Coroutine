@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.flow
 import java.io.IOException
 import javax.inject.Inject
 
-class CocktailRepository @Inject constructor(
+class MainRepository @Inject constructor(
     val cocktailDao: CocktailDao,
     val cocktailService: CocktailService
 ) : Repository {
