@@ -1,0 +1,26 @@
+package com.example.cocktailmvvmcoroutine.data.model
+
+data class DetailUiModel(
+    val strDrink: String,
+    val strTags: String,
+    val strInstructions: String,
+    val strDrinkThumb: String,
+    var strIngredientThumb1: String? = null,
+    var strIngredientInstructions1: String? = null,
+    var strIngredientThumb2: String? = null,
+    var strIngredientInstructions2: String? = null,
+    var strIngredientThumb3: String? = null,
+    var strIngredientInstructions3: String? = null,
+    var strIngredientThumb4: String? = null,
+    var strIngredientInstructions4: String? = null,
+    var strIngredientThumb5: String? = null,
+    var strIngredientInstructions5: String? = null,
+    var strIngredientThumb6: String? = null,
+    var strIngredientInstructions6: String? = null,
+    var strIngredientThumb7: String? = null,
+    var strIngredientInstructions7: String? = null,
+    var strIngredientThumb8: String? = null,
+    var strIngredientInstructions8: String? = null,
+    var strIngredientThumb9: String? = null,
+    var strIngredientInstructions9: String? = null,
+)

@@ -11,12 +11,12 @@ interface DetailDao {
     @Insert
     fun insertCocktailDetailInfo(cocktailDetailInfo: CocktailDetailInfo)
 
-    @Query("SELECT * FROM CocktailDetailInfo WHERE strDrink = :strDrink")
-    fun getCocktailDetailInfo(strDrink: String): CocktailDetailInfo
+    @Query("SELECT * FROM CocktailDetailInfo WHERE idDrink = :idDrink")
+    fun getCocktailDetailInfo(idDrink: Long): CocktailDetailInfo?
 
     @Insert
     fun insertIngredient(ingredient: Ingredient)
 
     @Query("SELECT * FROM Ingredient WHERE strIngredient = :strIngredient")
-    fun getIngredient(strIngredient: String): Ingredient
+    fun getIngredient(strIngredient: String): Ingredient?
 }

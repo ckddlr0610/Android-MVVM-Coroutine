@@ -15,10 +15,9 @@ class MainRepository @Inject constructor(
 ) : Repository {
     fun getCocktailList(): Flow<Result<List<Cocktail>>> {
         return flow {
+            emit(Result.Loading)
             val cocktails = cocktailDao.getCocktailList()
-
             if (cocktails.isEmpty()) {
-                emit(Result.Loading)
                 try {
                     val response = cocktailService.getAlcoholicCocktailList()
                     emit(Result.Success(response.drinks))

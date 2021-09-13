@@ -17,8 +17,8 @@ interface CocktailService {
         @Query("i") idDrink: Long
     ): CocktailDetailInfo
 
-    @GET("api/json/v1/1/lookup.php?")
+    @GET("api/json/v1/1/search.php?")
     suspend fun getIngredient(
-        @Query("iid") idIngredient: Long
+        @Query("i") strIngredient: String
     ): Ingredient
 }
