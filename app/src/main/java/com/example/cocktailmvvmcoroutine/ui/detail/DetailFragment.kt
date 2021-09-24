@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -15,7 +14,9 @@ import com.example.cocktailmvvmcoroutine.data.model.DetailUiModel
 import com.example.cocktailmvvmcoroutine.data.model.Result
 import com.example.cocktailmvvmcoroutine.databinding.FragmentDetailBinding
 import com.example.cocktailmvvmcoroutine.ui.adapter.IngredientAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
     private val viewModel: DetailViewModel by viewModels()
 
@@ -23,12 +24,16 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentDetailBinding.inflate(inflater, container, false)
 
         val adapter = IngredientAdapter()
         subscribeUi(binding, adapter)
-        viewModel.getDetailUiModel()
+
+        //TODO: 변수가 제대로 넘어오지 않았을 때 별도 처리가 필요
+        arguments?.getLong("idCocktail")?.let {
+            viewModel.getDetailUiModel(it)
+        }
 
         return binding.root
     }

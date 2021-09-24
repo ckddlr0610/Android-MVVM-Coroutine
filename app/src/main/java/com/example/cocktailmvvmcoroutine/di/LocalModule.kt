@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.cocktailmvvmcoroutine.data.local.AppDatabase
 import com.example.cocktailmvvmcoroutine.data.local.CocktailDao
+import com.example.cocktailmvvmcoroutine.data.local.DetailDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,4 +30,11 @@ object LocalModule {
         appDatabase: AppDatabase
     ): CocktailDao =
         appDatabase.cocktailDao()
+
+    @Provides
+    @Singleton
+    fun provideDetailDao(
+        appDatabase: AppDatabase
+    ): DetailDao =
+        appDatabase.detailDao()
 }

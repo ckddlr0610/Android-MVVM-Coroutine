@@ -1,7 +1,9 @@
 package com.example.cocktailmvvmcoroutine.di
 
 import com.example.cocktailmvvmcoroutine.data.local.CocktailDao
+import com.example.cocktailmvvmcoroutine.data.local.DetailDao
 import com.example.cocktailmvvmcoroutine.data.network.CocktailService
+import com.example.cocktailmvvmcoroutine.data.repository.DetailRepository
 import com.example.cocktailmvvmcoroutine.data.repository.MainRepository
 import dagger.Module
 import dagger.Provides
@@ -20,6 +22,17 @@ object RepositoryModule {
     ) : MainRepository =
         MainRepository(
             cocktailDao,
+            cocktailService
+        )
+
+    @Provides
+    @ActivityRetainedScoped
+    fun provideDetailRepository(
+        detailDao: DetailDao,
+        cocktailService: CocktailService
+    ) : DetailRepository =
+        DetailRepository(
+            detailDao,
             cocktailService
         )
 }

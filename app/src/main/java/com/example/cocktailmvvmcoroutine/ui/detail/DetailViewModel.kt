@@ -7,8 +7,10 @@ import androidx.lifecycle.asLiveData
 import com.example.cocktailmvvmcoroutine.data.model.DetailUiModel
 import com.example.cocktailmvvmcoroutine.data.model.Result
 import com.example.cocktailmvvmcoroutine.data.repository.DetailRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+@HiltViewModel
 class DetailViewModel @Inject constructor(
     private val detailRepository: DetailRepository
 ) : ViewModel() {
