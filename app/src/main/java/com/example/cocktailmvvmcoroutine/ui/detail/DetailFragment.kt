@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.cocktailmvvmcoroutine.data.model.DetailUiModel
-import com.example.cocktailmvvmcoroutine.data.model.Result
+import com.example.cocktailmvvmcoroutine.data.model.ResultOf
 import com.example.cocktailmvvmcoroutine.databinding.FragmentDetailBinding
 import com.example.cocktailmvvmcoroutine.ui.adapter.IngredientAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,11 +43,11 @@ class DetailFragment : Fragment() {
     private fun subscribeUi(binding: FragmentDetailBinding, adapter: IngredientAdapter) {
         viewModel.detailUiModel.observe(viewLifecycleOwner, { result ->
             when (result) {
-                is Result.Loading -> {
+                is ResultOf.Loading -> {
                     Toast.makeText(requireActivity(), "loading", Toast.LENGTH_SHORT).show()
                 }
 
-                is Result.Success<DetailUiModel> -> {
+                is ResultOf.Success<DetailUiModel> -> {
                     Glide.with(requireActivity())
                         .load(result.item.strDrinkThumb)
                         .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
@@ -59,7 +59,7 @@ class DetailFragment : Fragment() {
                     adapter.submitList(result.item.ingredients)
                 }
 
-                is Result.Error -> {
+                is ResultOf.Error -> {
                     Toast.makeText(
                         requireActivity(),
                         "error : ${result.throwable.toString()}",

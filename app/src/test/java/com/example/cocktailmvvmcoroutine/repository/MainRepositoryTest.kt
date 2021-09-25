@@ -4,7 +4,7 @@ import com.example.cocktailmvvmcoroutine.MockData
 import com.example.cocktailmvvmcoroutine.data.local.CocktailDao
 import com.example.cocktailmvvmcoroutine.data.model.Cocktail
 import com.example.cocktailmvvmcoroutine.data.model.CocktailResponse
-import com.example.cocktailmvvmcoroutine.data.model.Result
+import com.example.cocktailmvvmcoroutine.data.model.ResultOf
 import com.example.cocktailmvvmcoroutine.data.network.CocktailService
 import com.example.cocktailmvvmcoroutine.data.repository.MainRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -42,9 +42,9 @@ class MainRepositoryTest {
 
         val result = repository.getCocktailList().drop(1).first()
 
-        assertThat(result, instanceOf(Result.Success::class.java))
+        assertThat(result, instanceOf(ResultOf.Success::class.java))
 
-        if (result is Result.Success<List<Cocktail>>) {
+        if (result is ResultOf.Success<List<Cocktail>>) {
             assertEquals(result.item[0].idDrink, mockCocktails.idDrink)
             assertEquals(result.item[0].strDrink, mockCocktails.strDrink)
             assertEquals(result.item[0].strDrinkThumb, mockCocktails.strDrinkThumb)

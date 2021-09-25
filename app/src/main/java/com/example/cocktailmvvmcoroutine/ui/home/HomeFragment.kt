@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.cocktailmvvmcoroutine.R
 import com.example.cocktailmvvmcoroutine.data.model.Cocktail
-import com.example.cocktailmvvmcoroutine.data.model.Result
+import com.example.cocktailmvvmcoroutine.data.model.ResultOf
 import com.example.cocktailmvvmcoroutine.databinding.FragmentHomeBinding
 import com.example.cocktailmvvmcoroutine.ui.adapter.HomeAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,13 +37,13 @@ class HomeFragment : Fragment(), OnClickCocktailItemListener {
     private fun subscribeUi(adapter: HomeAdapter) {
         viewModel.cocktails.observe(viewLifecycleOwner, { result ->
             when(result) {
-                is Result.Loading -> {
+                is ResultOf.Loading -> {
                     Toast.makeText(requireActivity(), "loading", Toast.LENGTH_SHORT).show()
                 }
-                is Result.Success<List<Cocktail>> -> {
+                is ResultOf.Success<List<Cocktail>> -> {
                     adapter.submitList(result.item)
                 }
-                is Result.Error -> {
+                is ResultOf.Error -> {
                     Toast.makeText(requireActivity(), "error : ${result.throwable.toString()}", Toast.LENGTH_SHORT).show()
                 }
             }

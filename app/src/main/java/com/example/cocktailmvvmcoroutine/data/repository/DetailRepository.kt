@@ -3,7 +3,7 @@ package com.example.cocktailmvvmcoroutine.data.repository
 import com.example.cocktailmvvmcoroutine.data.local.DetailDao
 import com.example.cocktailmvvmcoroutine.data.model.DetailUiModel
 import com.example.cocktailmvvmcoroutine.data.model.Ingredient
-import com.example.cocktailmvvmcoroutine.data.model.Result
+import com.example.cocktailmvvmcoroutine.data.model.ResultOf
 import com.example.cocktailmvvmcoroutine.data.network.CocktailService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -14,9 +14,9 @@ class DetailRepository @Inject constructor(
     val detailDao: DetailDao,
     val cocktailService: CocktailService
 ) : Repository {
-    fun getDetailUiModel(idDrink: Long): Flow<Result<DetailUiModel>> {
+    fun getDetailUiModel(idDrink: Long): Flow<ResultOf<DetailUiModel>> {
         return flow {
-            emit(Result.Loading)
+            emit(ResultOf.Loading)
             val detailInfo = detailDao.getCocktailDetailInfo(idDrink)
             if (detailInfo == null) {
                 try {
@@ -71,9 +71,9 @@ class DetailRepository @Inject constructor(
 
                     result.ingredients = ingredients
 
-                    emit(Result.Success(result))
+                    emit(ResultOf.Success(result))
                 } catch (exception: IOException) {
-                    emit(Result.Error(exception))
+                    emit(ResultOf.Error(exception))
                 }
             } else {
                 val result = DetailUiModel(
@@ -124,7 +124,7 @@ class DetailRepository @Inject constructor(
 
                 result.ingredients = ingredients
 
-                emit(Result.Success(result))
+                emit(ResultOf.Success(result))
             }
         }
     }
