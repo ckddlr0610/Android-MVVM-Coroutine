@@ -1,6 +1,7 @@
 package com.example.cocktailmvvmcoroutine.ui.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,7 @@ class DetailFragment : Fragment() {
         val binding = FragmentDetailBinding.inflate(inflater, container, false)
 
         val adapter = IngredientAdapter()
+        binding.containerIngredient.adapter = adapter
         subscribeUi(binding, adapter)
 
         //TODO: 변수가 제대로 넘어오지 않았을 때 별도 처리가 필요
@@ -63,6 +65,8 @@ class DetailFragment : Fragment() {
                         "error : ${result.throwable.toString()}",
                         Toast.LENGTH_SHORT
                     ).show()
+
+                    Log.e("TAG", result.throwable.toString())
                 }
             }
         })

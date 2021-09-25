@@ -44,8 +44,7 @@ class IngredientAdapter : ListAdapter<Ingredient, RecyclerView.ViewHolder>(diffU
                 oldItem: Ingredient,
                 newItem: Ingredient
             ): Boolean =
-                oldItem.idIngredient == newItem.idIngredient &&
-                    oldItem.strIngredient == newItem.strIngredient
+                oldItem.idIngredient == newItem.idIngredient
         }
     }
 }

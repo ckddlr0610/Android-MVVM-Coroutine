@@ -5,12 +5,12 @@ import androidx.room.PrimaryKey
 
 //TODO: strIngredient를 효과적으로 관리할 방법은 없나?
 @Entity
-data class CocktailDetailInfo(
+data class CocktailDetail(
     @PrimaryKey val idDrink: Long,
-    val strDrink: String,
-    val strTags: String,
-    val strInstructions: String,
-    val strDrinkThumb: String,
+    val strDrink: String?,
+    val strTags: String?,
+    val strInstructions: String?,
+    val strDrinkThumb: String?,
     val strIngredient1: String? = null,
     val strIngredient2: String? = null,
     val strIngredient3: String? = null,

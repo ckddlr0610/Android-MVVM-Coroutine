@@ -3,16 +3,16 @@ package com.example.cocktailmvvmcoroutine.data.local
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.cocktailmvvmcoroutine.data.model.CocktailDetailInfo
+import com.example.cocktailmvvmcoroutine.data.model.CocktailDetail
 import com.example.cocktailmvvmcoroutine.data.model.Ingredient
 
 @Dao
 interface DetailDao {
     @Insert
-    fun insertCocktailDetailInfo(cocktailDetailInfo: CocktailDetailInfo)
+    fun insertCocktailDetailInfo(cocktailDetail: CocktailDetail)
 
-    @Query("SELECT * FROM CocktailDetailInfo WHERE idDrink = :idDrink")
-    fun getCocktailDetailInfo(idDrink: Long): CocktailDetailInfo?
+    @Query("SELECT * FROM CocktailDetail WHERE idDrink = :idDrink")
+    fun getCocktailDetailInfo(idDrink: Long): CocktailDetail?
 
     @Insert
     fun insertIngredient(ingredient: Ingredient)
