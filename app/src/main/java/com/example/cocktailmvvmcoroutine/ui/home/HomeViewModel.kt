@@ -4,19 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.example.cocktailmvvmcoroutine.data.model.Cocktail
-import com.example.cocktailmvvmcoroutine.data.model.Result
-import com.example.cocktailmvvmcoroutine.data.repository.Repository
+import com.example.cocktailmvvmcoroutine.data.model.ResultOf
+import com.example.cocktailmvvmcoroutine.data.repository.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    cocktailRepository: Repository
+    mainRepository: MainRepository
 ): ViewModel() {
-    private val _cocktails = cocktailRepository
+    private val _cocktails = mainRepository
         .getCocktailList()
         .asLiveData()
 
-    val cocktails : LiveData<Result<List<Cocktail>>>
+    val cocktails : LiveData<ResultOf<List<Cocktail>>>
         get() = _cocktails
 }

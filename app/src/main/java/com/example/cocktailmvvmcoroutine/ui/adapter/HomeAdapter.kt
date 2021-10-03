@@ -7,27 +7,36 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cocktailmvvmcoroutine.data.model.Cocktail
 import com.example.cocktailmvvmcoroutine.databinding.ItemCocktailListBinding
+import com.example.cocktailmvvmcoroutine.ui.home.OnClickCocktailItemListener
 
-class HomeAdapter : ListAdapter<Cocktail, RecyclerView.ViewHolder>(diffUtil) {
+class HomeAdapter(private val onClickCocktailItemListener: OnClickCocktailItemListener) :
+    ListAdapter<Cocktail, RecyclerView.ViewHolder>(diffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         CocktailViewHolder(
             ItemCocktailListBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ), onClickCocktailItemListener
         )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as CocktailViewHolder).bind(getItem(position))
     }
 
-    class CocktailViewHolder(private val binding: ItemCocktailListBinding) :
+    class CocktailViewHolder(
+        private val binding: ItemCocktailListBinding,
+        private val onClickCocktailItemListener: OnClickCocktailItemListener
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(cocktail: Cocktail) {
             binding.apply {
                 this.cocktail = cocktail
                 executePendingBindings()
+            }
+
+            binding.root.setOnClickListener {
+                onClickCocktailItemListener.onClickCocktailItem(cocktail.idDrink)
             }
         }
     }
