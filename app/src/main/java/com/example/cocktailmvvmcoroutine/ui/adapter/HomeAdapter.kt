@@ -53,10 +53,7 @@ class HomeAdapter(private val onClickCocktailItemListener: OnClickCocktailItemLi
                 oldItem: Cocktail,
                 newItem: Cocktail
             ): Boolean =
-                oldItem.idDrink == newItem.idDrink &&
-                    oldItem.strDrink == newItem.strDrink &&
-                    oldItem.strDrinkThumb == newItem.strDrinkThumb
-
+                oldItem == newItem
         }
     }
 }
