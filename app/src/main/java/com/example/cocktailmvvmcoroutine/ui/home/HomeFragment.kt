@@ -19,14 +19,16 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment(), OnClickCocktailItemListener {
     private val viewModel: HomeViewModel by viewModels()
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         val adapter = HomeAdapter(this)
+
         binding.rvCocktailList.adapter = adapter
 
         subscribeUi(adapter)
@@ -38,12 +40,14 @@ class HomeFragment : Fragment(), OnClickCocktailItemListener {
         viewModel.cocktails.observe(viewLifecycleOwner, { result ->
             when(result) {
                 is ResultOf.Loading -> {
-                    Toast.makeText(requireActivity(), "loading", Toast.LENGTH_SHORT).show()
+                    binding.pbHome.visibility = View.VISIBLE
                 }
                 is ResultOf.Success<List<Cocktail>> -> {
+                    binding.pbHome.visibility = View.INVISIBLE
                     adapter.submitList(result.item)
                 }
                 is ResultOf.Error -> {
+                    binding.pbHome.visibility = View.INVISIBLE
                     Toast.makeText(requireActivity(), "error : ${result.throwable.toString()}", Toast.LENGTH_SHORT).show()
                 }
             }

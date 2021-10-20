@@ -20,17 +20,18 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
     private val viewModel: DetailViewModel by viewModels()
+    private lateinit var binding: FragmentDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentDetailBinding.inflate(inflater, container, false)
+        binding = FragmentDetailBinding.inflate(inflater, container, false)
 
         val adapter = IngredientAdapter()
         binding.containerIngredient.adapter = adapter
-        subscribeUi(binding, adapter)
+        subscribeUi(adapter)
 
         //TODO: 변수가 제대로 넘어오지 않았을 때 별도 처리가 필요
         arguments?.getLong("idCocktail")?.let {
@@ -40,14 +41,16 @@ class DetailFragment : Fragment() {
         return binding.root
     }
 
-    private fun subscribeUi(binding: FragmentDetailBinding, adapter: IngredientAdapter) {
+    private fun subscribeUi(adapter: IngredientAdapter) {
         viewModel.detailUiModel.observe(viewLifecycleOwner, { result ->
             when (result) {
                 is ResultOf.Loading -> {
-                    Toast.makeText(requireActivity(), "loading", Toast.LENGTH_SHORT).show()
+                    binding.pbDetail.visibility = View.VISIBLE
                 }
 
                 is ResultOf.Success<DetailUiModel> -> {
+                    binding.pbDetail.visibility = View.INVISIBLE
+
                     Glide.with(requireActivity())
                         .load(result.item.strDrinkThumb)
                         .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
@@ -60,6 +63,8 @@ class DetailFragment : Fragment() {
                 }
 
                 is ResultOf.Error -> {
+                    binding.pbDetail.visibility = View.VISIBLE
+
                     Toast.makeText(
                         requireActivity(),
                         "error : ${result.throwable.toString()}",

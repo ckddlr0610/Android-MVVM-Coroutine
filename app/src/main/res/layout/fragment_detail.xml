@@ -7,57 +7,67 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/_guide_start"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="16dp" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/_guide_start"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/_guide_end"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="16dp" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/_guide_end"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
 
-        <ImageView
-            android:id="@+id/iv_cocktail"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="12dp"
-            tools:src="@drawable/test_image"
-            app:layout_constraintDimensionRatio="H, 1:1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="@id/_guide_start"
-            app:layout_constraintEnd_toEndOf="@id/_guide_end" />
+            <ImageView
+                android:id="@+id/iv_cocktail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintDimensionRatio="H, 1:1"
+                app:layout_constraintEnd_toEndOf="@id/_guide_end"
+                app:layout_constraintStart_toStartOf="@id/_guide_start"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/test_image" />
 
-        <TextView
-            android:id="@+id/tv_cocktail_instruction"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            tools:text="12312312312312312312312312312312321312312312313123131231231231231312331313"
-            app:layout_constraintTop_toBottomOf="@+id/iv_cocktail"
-            app:layout_constraintStart_toStartOf="@id/_guide_start"
-            app:layout_constraintEnd_toEndOf="@id/_guide_end" />
+            <TextView
+                android:id="@+id/tv_cocktail_instruction"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="@id/_guide_end"
+                app:layout_constraintStart_toStartOf="@id/_guide_start"
+                app:layout_constraintTop_toBottomOf="@+id/iv_cocktail"
+                tools:text="12312312312312312312312312312312321312312312313123131231231231231312331313" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/container_ingredient"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="3"
-            app:layout_constraintStart_toStartOf="@id/_guide_start"
-            app:layout_constraintEnd_toEndOf="@id/_guide_end"
-            app:layout_constraintTop_toBottomOf="@+id/tv_cocktail_instruction" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/container_ingredient"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/_guide_end"
+                app:layout_constraintStart_toStartOf="@id/_guide_start"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cocktail_instruction"
+                app:spanCount="3" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ProgressBar
+                android:id="@+id/pb_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 </layout>
