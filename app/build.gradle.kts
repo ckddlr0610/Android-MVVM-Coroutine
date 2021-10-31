@@ -84,4 +84,7 @@ dependencies {
     // image
     implementation (Versions.Library.glide)
     annotationProcessor (Versions.Library.glideCompiler)
+
+    // timber
+    implementation (Versions.Library.timber)
 }
