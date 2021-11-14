@@ -13,21 +13,25 @@ class MainRepository @Inject constructor(
     val cocktailDao: CocktailDao,
     val cocktailService: CocktailService
 ) : Repository {
-    fun getCocktailList(): Flow<ResultOf<List<Cocktail>>> {
+    fun getCocktailList(pageNum: Int): Flow<ResultOf<List<Cocktail>>> {
         return flow {
             emit(ResultOf.Loading)
-            val cocktails = cocktailDao.getCocktailList()
-            if (cocktails.isEmpty()) {
+            val cocktailsSub = cocktailDao.getCocktailListPerPage(pageNum * NUM_CONTENTS_PER_PAGE, (pageNum + 1) * NUM_CONTENTS_PER_PAGE)
+            if (cocktailsSub.isEmpty()) {
                 try {
                     val response = cocktailService.getAlcoholicCocktailList()
-                    emit(ResultOf.Success(response.drinks))
+                    emit(ResultOf.Success(response.drinks.subList(0, NUM_CONTENTS_PER_PAGE)))
                     cocktailDao.insertCocktailList(response.drinks)
                 } catch (e: IOException) {
                     emit(ResultOf.Error(e))
                 }
             } else {
-                emit(ResultOf.Success(cocktails))
+                emit(ResultOf.Success(cocktailsSub))
             }
         }
+    }
+
+    companion object {
+        const val NUM_CONTENTS_PER_PAGE = 20
     }
 }
