@@ -18,7 +18,7 @@ class MainRepository @Inject constructor(
         return flow {
             emit(ResultOf.Loading)
             val cocktailsSub = cocktailDao.getCocktailListPerPage(pageNum * NUM_CONTENTS_PER_PAGE, ((pageNum + 1) * NUM_CONTENTS_PER_PAGE) - 1)
-            if (cocktailsSub.isEmpty()) {
+            if (cocktailsSub.isEmpty() && pageNum == 0) {
                 try {
                     val response = cocktailService.getAlcoholicCocktailList()
                     emit(ResultOf.Success(response.drinks.subList(0, NUM_CONTENTS_PER_PAGE)))
