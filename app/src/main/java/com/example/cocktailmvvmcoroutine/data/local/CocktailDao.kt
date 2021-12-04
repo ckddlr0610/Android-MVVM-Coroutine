@@ -10,8 +10,8 @@ interface CocktailDao {
     @Insert
     suspend fun insertCocktailList(cocktails: List<Cocktail>)
 
-    @Query("SELECT * FROM Cocktail")
-    suspend fun getCocktailList() : List<Cocktail>
+    @Query("SELECT * FROM Cocktail WHERE index_drink BETWEEN :start AND :end")
+    suspend fun getCocktailListPerPage(start: Int, end:Int) : List<Cocktail>
 
     @Query("DELETE FROM Cocktail")
     suspend fun clearTable()

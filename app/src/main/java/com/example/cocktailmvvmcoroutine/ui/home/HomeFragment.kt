@@ -9,9 +9,8 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cocktailmvvmcoroutine.R
-import com.example.cocktailmvvmcoroutine.data.model.Cocktail
-import com.example.cocktailmvvmcoroutine.data.model.ResultOf
 import com.example.cocktailmvvmcoroutine.databinding.FragmentHomeBinding
 import com.example.cocktailmvvmcoroutine.ui.adapter.HomeAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,28 +28,41 @@ class HomeFragment : Fragment(), OnClickCocktailItemListener {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val adapter = HomeAdapter(this)
 
-        binding.rvCocktailList.adapter = adapter
+        binding.rvCocktailList.apply {
+            this.adapter = adapter
+            this.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+
+                    if (!binding.rvCocktailList.canScrollVertically(1)) {
+                        viewModel.incrementPageNum()
+                        viewModel.getCocktailList()
+                    }
+                }
+            })
+        }
 
         subscribeUi(adapter)
+        viewModel.getCocktailList()
 
         return binding.root
     }
 
     private fun subscribeUi(adapter: HomeAdapter) {
-        viewModel.cocktails.observe(viewLifecycleOwner, { result ->
-            when(result) {
-                is ResultOf.Loading -> {
-                    binding.pbHome.visibility = View.VISIBLE
-                }
-                is ResultOf.Success<List<Cocktail>> -> {
-                    binding.pbHome.visibility = View.INVISIBLE
-                    adapter.submitList(result.item)
-                }
-                is ResultOf.Error -> {
-                    binding.pbHome.visibility = View.INVISIBLE
-                    Toast.makeText(requireActivity(), "error : ${result.throwable.toString()}", Toast.LENGTH_SHORT).show()
-                }
+        viewModel.showProgress.observe(viewLifecycleOwner, {
+            if (it) {
+                binding.pbHome.visibility = View.VISIBLE
+            } else {
+                binding.pbHome.visibility = View.INVISIBLE
             }
+        })
+
+        viewModel.cocktails.observe(viewLifecycleOwner, {
+            adapter.submitList(it)
+        })
+
+        viewModel.showError.observe(viewLifecycleOwner, {
+            Toast.makeText(requireActivity(), "error : $it", Toast.LENGTH_SHORT).show()
         })
     }
 
