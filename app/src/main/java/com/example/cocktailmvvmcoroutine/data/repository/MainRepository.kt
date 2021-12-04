@@ -4,6 +4,8 @@ import com.example.cocktailmvvmcoroutine.data.local.CocktailDao
 import com.example.cocktailmvvmcoroutine.data.model.Cocktail
 import com.example.cocktailmvvmcoroutine.data.model.ResultOf
 import com.example.cocktailmvvmcoroutine.data.network.CocktailService
+import com.example.cocktailmvvmcoroutine.data.network.HttpClient
+import com.example.cocktailmvvmcoroutine.data.network.isConnectedNetwork
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import timber.log.Timber
@@ -24,7 +26,11 @@ class MainRepository @Inject constructor(
                     emit(ResultOf.Success(response.drinks.subList(0, NUM_CONTENTS_PER_PAGE)))
                     cocktailDao.insertCocktailList(response.drinks)
                 } catch (e: IOException) {
-                    emit(ResultOf.Error(e))
+                    if (isConnectedNetwork()) {
+                        emit(ResultOf.Error(e))
+                    } else {
+                        emit(ResultOf.Error(IOException("네트워크 연결을 해주세요")))
+                    }
                 }
             } else {
                 emit(ResultOf.Success(cocktailsSub))

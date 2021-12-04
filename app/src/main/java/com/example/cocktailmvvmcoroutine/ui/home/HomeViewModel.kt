@@ -42,7 +42,7 @@ class HomeViewModel @Inject constructor(
                     }
                     is ResultOf.Error -> {
                         _showProgress.value = false
-                        _showError.value = result.throwable.toString()
+                        _showError.value = result.throwable?.message
                     }
                 }
             }
